@@ -29,18 +29,51 @@
 </head>
 
 <body>
+    <style>
+        /* Styling for the dialog box */
+        .dialog-box {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
 
+        .dialog-content {
+            background-color: #242323;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
     <!-- ***** Preloader Start ***** -->
+
     <div id="js-preloader" class="js-preloader">
-        <div class="preloader-inner">
-            <span class="dot"></span>
-            <div class="dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+        <img src="assets/images/pika-loader.gif" style="max-width: 200px; max-height: 200px; width: auto;"
+            alt="Custom Preloader GIF">
     </div>
+
     <!-- ***** Preloader End ***** -->
 
     <!-- ***** Header Area Start ***** -->
@@ -77,13 +110,75 @@
                 <div class="col-lg-12">
                     <h6>Interested in Riser's Tournament?</h6>
                     <h2>Registration Form</h2>
-                    <br>
-                    <iframe
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSdHTV_zaWtz99GA7YiDjmZczNC8L3hzi-dFSzen-HZf0xsBZA/viewform?embedded=true"
-                        width="600" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <div class="buttons">
+                        <div class="main-button">
+                            <a href="#" onclick="openDialog()">RULES</a>
+                        </div>
+                        <div class=" border-button" style="padding-left: 10px;">
+                            <a href="https://forms.gle/qjLrRpL57CcFEEpc7" target="_blank"><b>FORM LINK</b></a>
+                        </div>
+                    </div>
                 </div>
+                <br>
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSdHTV_zaWtz99GA7YiDjmZczNC8L3hzi-dFSzen-HZf0xsBZA/viewform?embedded=true"
+                    width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
         </div>
+    </div>
+    <div id="passageDialog" class="dialog-box">
+        <div class="dialog-content">
+            <span class="close-btn" onclick="closeDialog()">&times;</span>
+            <h2>RISER'S TOURNAMENT RULES & REGULATIONS</h2>
+
+            <p><strong>Eligibility:</strong> The tournament is open to all players residing anywhere, who are at least
+                13 years old and can play on the Mumbai server.</p>
+
+            <p><strong>Registration:</strong> Teams must register online through the tournament website at least one
+                week before the tournament start date. Each team must have five players, and each player can only play
+                for one team. Solo players may form teams with other players in the ⁠risers-find-players channel.</p>
+
+            <p><strong>Format:</strong> The tournament will be a single-elimination bracket for all matches, except for
+                the semi-finals and finals, which will be best-of-three. The maximum number of teams will be 12. Maximum
+                of Two Timeouts will be provided.</p>
+
+            <p><strong>Game Settings:</strong> All games will be played on VALORANT's default competitive settings, with
+                a maximum of 12 rounds per half.</p>
+
+            <p><strong>Map Pool:</strong> The map pool for the tournament will be the standard custom map pool available
+                in VALORANT, except Breeze & Icebox.</p>
+
+            <p><strong>Server Location:</strong> All matches will be played on the Mumbai server only.</p>
+
+            <p><strong>Game Rules:</strong> Any use of cheats, hacks, or exploits is strictly prohibited and will result
+                in immediate disqualification of the offending player and their team. Players are not allowed to use any
+                coaching or receive outside assistance during the game.</p>
+
+            <p><strong>Code of Conduct:</strong> All players are expected to behave in a sportsmanlike manner and treat
+                each other with respect. Any verbal abuse, hate speech, or inappropriate behavior will not be tolerated
+                and may result in disciplinary action.</p>
+
+            <p><strong>Prize Pool:</strong> The prize pool for the tournament will be 2000 INR. Every participating team
+                will receive a participation e-certificate.</p>
+
+            <p><strong>Streaming:</strong> Matches from the semi-finals onwards will be streamed on YouTube.</p>
+
+            <p><strong>Verification:</strong> The tournament organizers will verify the members of each team through the
+                team leads.</p>
+
+            <p><strong>Registration Deadline:</strong> January 19, 2024 :EVs_02catrageuwu:</p>
+
+            <p><strong>Entry Fee:</strong> Rs 100 per team :ThumbsUpCuteAnimeGirl:</p>
+
+            <p><strong>Match Dates:</strong> Scheduled shortly after the registration closes. Kindly be patient.
+                :nekolove:</p>
+
+            <p><strong>Changes to Rules:</strong> The tournament organizer reserves the right to modify the rules at any
+                time for any reason. Any changes to the rules will be communicated to the participating teams as soon as
+                possible.</p>
+        </div>
+
+    </div>
     </div>
 
     <footer>
@@ -110,6 +205,25 @@
     <script src="assets/js/tabs.js"></script>
     <script src="assets/js/popup.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script>
+        function openDialog() {
+            document.getElementById("passageDialog").style.display = "block";
+        }
+
+        // Close the dialog box
+        function closeDialog() {
+            document.getElementById("passageDialog").style.display = "none";
+        }
+
+        // Close the dialog box when clicking outside of it
+        window.onclick = function (event) {
+            var dialog = document.getElementById("passageDialog");
+            if (event.target === dialog) {
+                dialog.style.display = "none";
+            }
+        };
+
+    </script>
 </body>
 
 </html>
